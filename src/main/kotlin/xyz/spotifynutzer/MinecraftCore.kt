@@ -24,9 +24,13 @@ class MinecraftCore : JavaPlugin() {
     //Values
     private lateinit var prefix: String
 
-    override fun onEnable() {
+    override fun onLoad() {
         instance = this
         commandManager = CommandManager()
+    }
+
+    override fun onEnable() {
+
     }
 
     override fun onDisable() {

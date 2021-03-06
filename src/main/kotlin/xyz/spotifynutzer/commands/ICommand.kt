@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender
 
 interface ICommand: CommandExecutor {
 
-    override fun onCommand(p0: CommandSender?, p1: Command?, p2: String?, p3: Array<out String>?): Boolean
+    override fun onCommand(sender: CommandSender?, command: Command?, string: String?, args: Array<out String>?): Boolean
 
     fun getCommand(): String
 }
