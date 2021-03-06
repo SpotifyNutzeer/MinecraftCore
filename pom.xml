@@ -6,7 +6,7 @@
 
     <artifactId>MinecraftCore</artifactId>
     <groupId>xyz.spotifynutzer</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-DEV</version>
     <packaging>jar</packaging>
 
     <name>MinecraftCore</name>
@@ -66,6 +66,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>MinecraftCore-Releases</id>
+            <name>a0dwrl0hyrey5-artifactory-primary-0-releases</name>
+            <url>https://spotifynutzer.jfrog.io/artifactory/MinecraftCore</url>
+        </repository>
+        <snapshotRepository>
+            <id>MinecraftCore-Snapshots</id>
+            <name>a0dwrl0hyrey5-artifactory-primary-0-snapshots</name>
+            <url>https://spotifynutzer.jfrog.io/artifactory/MinecraftCore</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
