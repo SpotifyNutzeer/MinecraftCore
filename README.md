@@ -1,6 +1,7 @@
 # MinecraftCore
 <h2>Repository & Dependency</h2>
 Maven
+
 ````XML
 <repositories>
     ...
@@ -12,6 +13,7 @@ Maven
     ...
 </repositories>
 ````
+
 ````XML
 <dependencies>
     ...
@@ -25,4 +27,4 @@ Maven
 </dependencies>
 ````
 
-<a href="https://github.com/SpotifyNutzeer/MinecraftCore/docs/wiki">Wiki</a>
+<a href="https://github.com/SpotifyNutzeer/MinecraftCore/wiki">Wiki</a>
