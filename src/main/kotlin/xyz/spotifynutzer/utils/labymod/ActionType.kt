@@ -7,7 +7,7 @@ package xyz.spotifynutzer.utils.labymod;
  * Erstellt am: 07.03.2021 um 10:35
  */
 
-public enum ActionType {
+enum class ActionType {
     NONE,
     CLIPBOARD,
     RUN_COMMAND,

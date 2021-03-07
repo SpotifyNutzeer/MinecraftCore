@@ -2,6 +2,7 @@ package xyz.spotifynutzer.utils.labymod;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.function.Predicate
 
 /**
  * @author kxmpetentes
@@ -9,7 +10,7 @@ import java.util.Random;
  * GitHub: git.kxmpetentes.de
  * Erstellt am: 07.03.2021 um 10:01
  */
-public enum LabyEmotes {
+enum class LabyEmotes {
 
     STOP_EMOTE(-1),
     BACKFLIP(2),
@@ -113,22 +114,22 @@ public enum LabyEmotes {
     DJ(170),
     Sneeze(173);
 
-    int emoteID;
+    private val emoteID: Int
 
-    LabyEmotes(int id) {
-        this.emoteID = id;
+    constructor(id: Int) {
+        this.emoteID = id
     }
 
-    public int getEmoteID() {
-        return emoteID;
+    fun getEmoteID(): Int {
+        return emoteID
     }
 
-    public LabyEmotes findById(int id) {
-        return Arrays.stream(LabyEmotes.values()).filter(labyEmotes -> labyEmotes.getEmoteID() == id).findAny().orElse(null);
+    fun findById(id: Int): LabyEmotes {
+        return Arrays.stream(LabyEmotes.values()).filter(Predicate { t -> t.emoteID == id }).findAny().orElse(null);
     }
 
-    public LabyEmotes randomEmote() {
-        return Arrays.asList(LabyEmotes.values()).get(new Random().nextInt(LabyEmotes.values().length));
+    fun randomEmote(): LabyEmotes {
+        return values()[Random().nextInt(values().size)]
     }
 
 }

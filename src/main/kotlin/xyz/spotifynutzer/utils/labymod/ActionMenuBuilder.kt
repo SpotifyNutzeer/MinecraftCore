@@ -10,20 +10,20 @@ import com.google.gson.JsonObject;
  * Erstellt am: 07.03.2021 um 10:33
  */
 
-public class ActionMenuBuilder {
+class ActionMenuBuilder {
 
-    private final JsonArray jsonArray = new JsonArray();
+    private val jsonArray: JsonArray = JsonArray()
 
-    public void addAction(String displayName, ActionType actionType, String value) {
-        JsonObject entry = new JsonObject();
+    fun addAction(displayName: String, actionType: ActionType, value: String) {
+        val entry = JsonObject();
         entry.addProperty("displayName", displayName);
-        entry.addProperty("type", actionType.name());
+        entry.addProperty("type", actionType.name);
         entry.addProperty("value", value);
         jsonArray.add(entry);
     }
 
-    public JsonObject getJsonObject() {
-        return jsonArray.getAsJsonObject();
+    fun getJsonObject(): JsonObject {
+        return jsonArray.asJsonObject;
     }
 
 }

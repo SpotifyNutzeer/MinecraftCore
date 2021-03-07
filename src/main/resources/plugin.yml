@@ -1,6 +1,7 @@
 main: xyz.spotifynutzer.MinecraftCore
 name: MinecraftCore
 version: 1.0
+api-version: 1.8
 authors:
   - SpotifyNutzer
   - kxmpetentes

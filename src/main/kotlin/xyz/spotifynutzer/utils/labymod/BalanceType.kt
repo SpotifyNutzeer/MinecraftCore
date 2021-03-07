@@ -7,18 +7,18 @@ package xyz.spotifynutzer.utils.labymod;
  * Erstellt am: 07.03.2021 um 10:13
  */
 
-public enum BalanceType {
+enum class BalanceType {
 
     CASH("cash"),
     BANK("bank");
 
-    private final String key;
+    private val key: String
 
-    BalanceType(String key) {
-        this.key = key;
+    constructor(key: String) {
+        this.key = key
     }
 
-    public String getKey() {
-        return this.key;
+    fun getKey(): String {
+        return key
     }
 }
