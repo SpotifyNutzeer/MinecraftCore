@@ -32,10 +32,11 @@ class MinecraftCore : JavaPlugin() {
     }
 
     override fun onEnable() {
+        Bukkit.getConsoleSender().sendMessage("§8[§aMinecraftCore§8] §aLoaded Plugin!")
     }
 
     override fun onDisable() {
-
+        Bukkit.getConsoleSender().sendMessage("§8[§aMinecraftCore§8] §cUnloaded Plugin!")
     }
 
     fun registerListeners(vararg listeners: Listener) {
