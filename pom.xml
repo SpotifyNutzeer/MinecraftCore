@@ -27,6 +27,11 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
     </repositories>
 
     <build>
@@ -134,6 +139,13 @@
             <groupId>com.github.azbh111</groupId>
             <artifactId>craftbukkit-1.8.8</artifactId>
             <version>R</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.12.7</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
