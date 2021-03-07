@@ -1,10 +1,12 @@
 package xyz.spotifynutzer
 
 import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
 import xyz.spotifynutzer.commands.CommandManager
+import xyz.spotifynutzer.utils.PacketDecoder
 
 class MinecraftCore : JavaPlugin() {
 
@@ -30,7 +32,6 @@ class MinecraftCore : JavaPlugin() {
     }
 
     override fun onEnable() {
-
     }
 
     override fun onDisable() {
@@ -58,5 +59,13 @@ class MinecraftCore : JavaPlugin() {
 
     fun getCommandManager(): CommandManager {
         return commandManager
+    }
+
+    fun injectPacketDecoder(player: Player): PacketDecoder {
+        return PacketDecoder(player).inject()
+    }
+
+    fun disconnectPacketDecoder(packetDecoder: PacketDecoder) {
+        packetDecoder.disconnect()
     }
 }
