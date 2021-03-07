@@ -1,4 +1,5 @@
 # MinecraftCore
+[![Java CI with Maven](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml/badge.svg)](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml)
 <h2>Repository & Dependency</h2>
 Maven
 
