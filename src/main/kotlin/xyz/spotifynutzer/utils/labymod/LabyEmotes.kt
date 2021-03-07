@@ -1,8 +1,6 @@
-package xyz.spotifynutzer.utils.labymod;
+package xyz.spotifynutzer.utils.labymod
 
-import java.util.Arrays;
-import java.util.Random;
-import java.util.function.Predicate
+import java.util.*
 
 /**
  * @author kxmpetentes
@@ -125,7 +123,7 @@ enum class LabyEmotes {
     }
 
     fun findById(id: Int): LabyEmotes {
-        return Arrays.stream(LabyEmotes.values()).filter(Predicate { t -> t.emoteID == id }).findAny().orElse(null);
+        return Arrays.stream(values()).filter { t -> t.emoteID == id }.findAny().orElse(null)
     }
 
     fun randomEmote(): LabyEmotes {

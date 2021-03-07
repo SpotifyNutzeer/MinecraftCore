@@ -8,6 +8,8 @@ import org.bukkit.plugin.java.JavaPlugin
 import xyz.spotifynutzer.commands.CommandManager
 import xyz.spotifynutzer.database.DatabaseManager
 import xyz.spotifynutzer.database.MongoAPI
+import xyz.spotifynutzer.listeners.JoinListener
+import xyz.spotifynutzer.manager.MinecraftPlayerCacheManager
 import xyz.spotifynutzer.utils.PacketDecoder
 
 class MinecraftCore : JavaPlugin() {
@@ -28,6 +30,7 @@ class MinecraftCore : JavaPlugin() {
     //Lateinit Class Instances
     private lateinit var commandManager: CommandManager
     private lateinit var mongoAPI: MongoAPI
+    private lateinit var playerCacheManager: MinecraftPlayerCacheManager
 
     //Values
     private lateinit var prefix: String
@@ -35,9 +38,11 @@ class MinecraftCore : JavaPlugin() {
     override fun onLoad() {
         instance = this
         commandManager = CommandManager()
+        playerCacheManager = MinecraftPlayerCacheManager(ArrayList())
     }
 
     override fun onEnable() {
+        registerListeners(JoinListener())
         Bukkit.getConsoleSender().sendMessage("§8[§aMinecraftCore§8] §aLoaded Plugin!")
     }
 
@@ -78,6 +83,10 @@ class MinecraftCore : JavaPlugin() {
 
     fun getDatabaseManager(): DatabaseManager {
         return databaseManager
+    }
+
+    fun getPlayerCacheManager(): MinecraftPlayerCacheManager {
+        return playerCacheManager
     }
 
     fun injectPacketDecoder(player: Player): PacketDecoder {

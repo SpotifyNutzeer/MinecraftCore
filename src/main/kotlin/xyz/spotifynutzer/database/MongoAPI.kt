@@ -1,6 +1,9 @@
 package xyz.spotifynutzer.database
 
-import com.mongodb.*
+import com.mongodb.MongoClientException
+import com.mongodb.MongoClientSettings
+import com.mongodb.MongoCredential
+import com.mongodb.ServerAddress
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoClients
 import com.mongodb.client.MongoDatabase
@@ -19,6 +22,14 @@ class MongoAPI {
     private lateinit var mongoDatabase: MongoDatabase
     private lateinit var mongoClient: MongoClient
 
+    /**
+     * @param ip            ip of the server
+     * @param port          port of the server
+     * @param userName      username for login
+     * @param password      password for login
+     * @param authDatabase  authentication database
+     * @param database      main database
+     */
     constructor(ip: String, port: String, userName: String, password: String, authDatabase: String, database: String) {
         this.ip = ip
         this.port = port
@@ -29,6 +40,12 @@ class MongoAPI {
         this.database = database
     }
 
+    /**
+     * @param userName      username for login
+     * @param password      password for login
+     * @param authDatabase  authentication database
+     * @param database      main database
+     */
     constructor(
         inetSocketAddress: InetSocketAddress,
         userName: String,
@@ -45,15 +62,19 @@ class MongoAPI {
         this.database = database
     }
 
+    /**
+     * @throws MongoClientException
+     */
     fun openConnection() {
         val mongoCredential: MongoCredential =
             MongoCredential.createCredential(userName, authDatabase, passwordCharArray)
 
-        val mongoClientSettings: MongoClientSettings = MongoClientSettings.builder().credential(mongoCredential).applyToClusterSettings { builder ->
-            run {
-                builder.hosts(Collections.singletonList(ServerAddress(ip, Integer.valueOf(port))))
-            }
-        }.build()
+        val mongoClientSettings: MongoClientSettings =
+            MongoClientSettings.builder().credential(mongoCredential).applyToClusterSettings { builder ->
+                run {
+                    builder.hosts(Collections.singletonList(ServerAddress(ip, Integer.valueOf(port))))
+                }
+            }.build()
 
 
         mongoClient = MongoClients.create(mongoClientSettings)
@@ -61,18 +82,30 @@ class MongoAPI {
 
     }
 
+    /**
+     * @return          the main database
+     */
     fun getDatabase(): MongoDatabase {
         return mongoDatabase
     }
 
+    /**
+     * @return          database out of mongo server
+     */
     fun getDatabase(database: String): MongoDatabase {
         return mongoClient.getDatabase(database)
     }
 
+    /**
+     * @return          connection state
+     */
     fun isConnected(): Boolean {
         return mongoDatabase != null
     }
 
+    /**
+     * closes the Mongo Connection
+     */
     fun disconnect() {
         mongoClient.close()
     }

@@ -27,6 +27,22 @@ class MinecraftPlayer {
         this.craftPlayer = this.player as CraftPlayer
     }
 
+    fun getUniqueID(): UUID {
+        return player.uniqueId
+    }
+
+    fun getUniqueIDString(): String {
+        return player.uniqueId.toString()
+    }
+
+    fun getPlayer(): Player {
+        return player
+    }
+
+    fun getCraftPlayer(): CraftPlayer {
+        return craftPlayer
+    }
+
     fun sendActionBar(message: String) {
         val packet: PacketPlayOutChat = PacketPlayOutChat(
             IChatBaseComponent.ChatSerializer.a("{\"text\":\" ${message.replace("&", "§")} \"}"),
