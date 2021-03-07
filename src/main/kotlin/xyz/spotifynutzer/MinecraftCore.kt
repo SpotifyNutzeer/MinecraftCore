@@ -6,6 +6,8 @@ import org.bukkit.event.Listener
 import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
 import xyz.spotifynutzer.commands.CommandManager
+import xyz.spotifynutzer.database.DatabaseManager
+import xyz.spotifynutzer.database.MongoAPI
 import xyz.spotifynutzer.utils.PacketDecoder
 
 class MinecraftCore : JavaPlugin() {
@@ -21,7 +23,11 @@ class MinecraftCore : JavaPlugin() {
     }
 
     //Class Instances
+    private val databaseManager: DatabaseManager = DatabaseManager()
+
+    //Lateinit Class Instances
     private lateinit var commandManager: CommandManager
+    private lateinit var mongoAPI: MongoAPI
 
     //Values
     private lateinit var prefix: String
@@ -58,8 +64,20 @@ class MinecraftCore : JavaPlugin() {
         return prefix
     }
 
+    fun setMongoAPI(mongoAPI: MongoAPI) {
+        this.mongoAPI = mongoAPI
+    }
+
+    fun getMongoAPI(): MongoAPI {
+        return mongoAPI
+    }
+
     fun getCommandManager(): CommandManager {
         return commandManager
+    }
+
+    fun getDatabaseManager(): DatabaseManager {
+        return databaseManager
     }
 
     fun injectPacketDecoder(player: Player): PacketDecoder {
