@@ -30,11 +30,11 @@ class ItemBuilder {
     private val enchants = HashMap<Enchantment, Int>()
     private var unbreakable = false
 
-    fun ItemBuilder(material: Material?) {
+    constructor(material: Material?) {
         this.material = material
     }
 
-    fun ItemBuilder(material: Material?, amount: Int) {
+    constructor(material: Material?, amount: Int) {
         this.material = material
         this.amount = amount
     }
