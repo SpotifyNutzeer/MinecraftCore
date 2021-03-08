@@ -22,8 +22,9 @@ class Configuration {
         return config
     }
 
-    fun setConfig(config: MutableMap<String, Any>?) {
+    fun setConfig(config: MutableMap<String, Any>?): Configuration {
         this.config = config
+        return this
     }
 
     fun put(key: String, value: Any) {

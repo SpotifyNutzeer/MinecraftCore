@@ -13,7 +13,7 @@ class ConfigProvider {
 
     @Throws(ConfigurationException::class, IOException::class)
     fun saveConfig(@NotNull file: File) {
-        if (this.configuration != null) {
+        if (this.configuration == null) {
             throw Exception("Configuration cannot be null!")
         }
 
