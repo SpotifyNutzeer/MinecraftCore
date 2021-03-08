@@ -11,6 +11,7 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author kxmpetentes
@@ -133,7 +134,7 @@ public class LMCUtils {
             byte[] bytes = new byte[i];
             buf.readBytes(bytes);
 
-            String s = new String(bytes, Charset.forName("UTF-8"));
+            String s = new String(bytes, StandardCharsets.UTF_8);
             if (s.length() > maxLength) {
                 throw new DecoderException("The received string length is longer than maximum allowed (" + i + " > " + maxLength + ")");
             } else {

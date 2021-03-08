@@ -15,15 +15,19 @@ class ActionMenuBuilder {
     private val jsonArray: JsonArray = JsonArray()
 
     fun addAction(displayName: String, actionType: ActionType, value: String) {
-        val entry = JsonObject();
-        entry.addProperty("displayName", displayName);
-        entry.addProperty("type", actionType.name);
-        entry.addProperty("value", value);
-        jsonArray.add(entry);
+        val entry = JsonObject()
+        entry.addProperty("displayName", displayName)
+        entry.addProperty("type", actionType.name)
+        entry.addProperty("value", value)
+        jsonArray.add(entry)
     }
 
     fun getJsonObject(): JsonObject {
-        return jsonArray.asJsonObject;
+        return jsonArray.asJsonObject
+    }
+
+    fun getObject(): String {
+        return jsonArray.toString()
     }
 
 }

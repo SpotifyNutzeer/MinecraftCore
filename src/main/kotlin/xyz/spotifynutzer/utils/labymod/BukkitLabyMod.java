@@ -1,10 +1,12 @@
 package xyz.spotifynutzer.utils.labymod;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import xyz.spotifynutzer.events.MessageSendEvent;
 import xyz.spotifynutzer.utils.LMCUtils;
+import xyz.spotifynutzer.utils.PacketUtils;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +19,42 @@ import java.util.UUID;
  */
 
 public class BukkitLabyMod {
+
+    private final JsonParser jsonParser = new JsonParser();
+    private final PacketUtils packetUtils = new PacketUtils();
+
+    /**
+     * Sends a JSON server-message to the player
+     *
+     * @param player          the player the message should be sent to
+     * @param messageKey      the message's key
+     * @param messageContents the message's contents
+     */
+    public void sendServerMessage(Player player, String messageKey, JsonElement messageContents) {
+        messageContents = cloneJson(messageContents);
+
+        // Calling the Bukkit event
+        MessageSendEvent sendEvent = new MessageSendEvent(player, messageKey, messageContents);
+        Bukkit.getPluginManager().callEvent(sendEvent);
+
+        // Sending the packet
+        packetUtils.sendPacket(player, packetUtils.getPluginMessagePacket("LMC", LMCUtils.getBytesToSend(messageKey, messageContents.toString())));
+    }
+
+    /**
+     * Clones a JsonElement
+     *
+     * @param cloneElement the element that should be cloned
+     * @return the cloned element
+     */
+    public JsonElement cloneJson(JsonElement cloneElement) {
+        try {
+            return jsonParser.parse(cloneElement.toString());
+        } catch (JsonParseException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
     public void forceEmote(Player receiver, UUID npcUUID, LabyEmotes labyEmote) {
         JsonArray array = new JsonArray();
@@ -203,7 +241,7 @@ public class BukkitLabyMod {
     }
 
     public void setMiddleClickActions(Player player, ActionMenuBuilder actionMenuBuilder) {
-        LMCUtils.sendLMCMessage(player, "user_menu_actions", actionMenuBuilder.getJsonObject());
+        sendServerMessage(player, "user_menu_actions", actionMenuBuilder.getJsonObject());
     }
 
 }
