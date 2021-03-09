@@ -1,21 +1,18 @@
 package xyz.spotifynutzer.json
 
-import com.google.common.collect.Maps
+import xyz.spotifynutzer.MinecraftCore
 import java.io.File
-import java.lang.NullPointerException
-import java.lang.NumberFormatException
 
 class ConfigManager {
 
     private val configuration: Configuration
-    private val configMap: HashMap<String, Any>
+
 
     /**
      * constructor with no configuration (creates empty configuration)
      */
     constructor() {
         this.configuration = Configuration()
-        this.configMap = Maps.newHashMap()
     }
 
     /**
@@ -23,7 +20,6 @@ class ConfigManager {
      */
     constructor(configuration: Configuration) {
         this.configuration = configuration
-        this.configMap = configuration.getConfig() as HashMap<String, Any>
     }
 
     /**
@@ -31,7 +27,7 @@ class ConfigManager {
      * @param value                     the string that should be written
      */
     fun setString(path: String, value: String) {
-        this.configMap[path] = value
+        this.configuration.put(path, value)
     }
 
     /**
@@ -41,7 +37,7 @@ class ConfigManager {
      */
     @Throws(NullPointerException::class)
     fun getString(path: String): String? {
-        return this.configMap[path].toString()
+        return this.configuration[path].toString()
     }
 
     /**
@@ -49,7 +45,7 @@ class ConfigManager {
      * @param value                     the integer that should be written
      */
     fun setInt(path: String, value: Int) {
-        this.configMap[path] = value
+        this.configuration.put(path, value)
     }
 
     /**
@@ -60,7 +56,7 @@ class ConfigManager {
      */
     @Throws(NumberFormatException::class, NullPointerException::class)
     fun getInt(path: String): Int? {
-        return Integer.parseInt(configMap[path].toString())
+        return Integer.parseInt(configuration[path].toString())
     }
 
     /**
@@ -68,7 +64,7 @@ class ConfigManager {
      * @param value                     the double that should be written
      */
     fun setDouble(path: String, value: Double) {
-        this.configMap[path] = value
+        this.configuration.put(path, value)
     }
 
     /**
@@ -79,7 +75,7 @@ class ConfigManager {
      */
     @Throws(NumberFormatException::class, NullPointerException::class)
     fun getDouble(path: String): Double? {
-        return java.lang.Double.valueOf(configMap[path].toString())
+        return java.lang.Double.valueOf(configuration[path].toString())
     }
 
     /**
@@ -87,7 +83,7 @@ class ConfigManager {
      * @param value                     the long that should be written
      */
     fun setLong(path: String, value: Long) {
-        this.configMap[path] = value
+        this.configuration.put(path, value)
     }
 
     /**
@@ -98,7 +94,7 @@ class ConfigManager {
      */
     @Throws(NumberFormatException::class, NullPointerException::class)
     fun getLong(path: String): Long? {
-        return java.lang.Long.valueOf(configMap[path].toString())
+        return java.lang.Long.valueOf(configuration[path].toString())
     }
 
     /**
@@ -106,7 +102,7 @@ class ConfigManager {
      * @param value                     the value that should be written
      */
     fun set(path: String, value: Any) {
-        this.configMap[path] = value
+        this.configuration.put(path, value)
     }
 
     /**
@@ -116,18 +112,18 @@ class ConfigManager {
      */
     @Throws(NullPointerException::class)
     fun get(path: String): Any? {
-        return this.configMap[path]
+        return this.configuration[path]
     }
 
     fun getConfiguration(): Configuration {
         return configuration
     }
 
-    fun getConfigMap(): HashMap<String, Any> {
-        return configMap
+    fun getConfigMap(): Map<String, Any>? {
+        return configuration.getConfig()
     }
 
     fun saveToFile(file: File) {
-        ConfigProvider().saveConfig(file, Configuration().setConfig(configMap.toMutableMap()))
+        MinecraftCore.getInstance().getConfigProvider().saveConfig(file, configuration)
     }
 }

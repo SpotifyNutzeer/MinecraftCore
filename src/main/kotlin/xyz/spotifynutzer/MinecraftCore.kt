@@ -10,7 +10,6 @@ import xyz.spotifynutzer.database.DatabaseManager
 import xyz.spotifynutzer.database.MongoAPI
 import xyz.spotifynutzer.json.ConfigManager
 import xyz.spotifynutzer.json.ConfigProvider
-import xyz.spotifynutzer.json.Configuration
 import xyz.spotifynutzer.listeners.JoinListener
 import xyz.spotifynutzer.manager.MinecraftPlayerCacheManager
 import xyz.spotifynutzer.utils.PacketDecoder
@@ -29,6 +28,7 @@ class MinecraftCore : JavaPlugin() {
 
     //Class Instances
     private val databaseManager: DatabaseManager = DatabaseManager()
+    private val configProvider: ConfigProvider = ConfigProvider()
 
     //Lateinit Class Instances
     private lateinit var commandManager: CommandManager
@@ -102,6 +102,10 @@ class MinecraftCore : JavaPlugin() {
 
     fun createNewJsonConfig(path: String): ConfigManager {
         return ConfigManager()
+    }
+
+    fun getConfigProvider(): ConfigProvider {
+        return configProvider
     }
 
 }
