@@ -26,6 +26,10 @@ class ActionMenuBuilder {
         return jsonArray.asJsonObject
     }
 
+    fun getJsonArray(): JsonArray {
+        return jsonArray
+    }
+
     fun getObject(): String {
         return jsonArray.toString()
     }

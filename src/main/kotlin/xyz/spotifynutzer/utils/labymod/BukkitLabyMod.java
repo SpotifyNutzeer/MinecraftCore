@@ -33,10 +33,6 @@ public class BukkitLabyMod {
     public void sendServerMessage(Player player, String messageKey, JsonElement messageContents) {
         messageContents = cloneJson(messageContents);
 
-        // Calling the Bukkit event
-        MessageSendEvent sendEvent = new MessageSendEvent(player, messageKey, messageContents);
-        Bukkit.getPluginManager().callEvent(sendEvent);
-
         // Sending the packet
         packetUtils.sendPacket(player, packetUtils.getPluginMessagePacket("LMC", LMCUtils.getBytesToSend(messageKey, messageContents.toString())));
     }
@@ -241,7 +237,7 @@ public class BukkitLabyMod {
     }
 
     public void setMiddleClickActions(Player player, ActionMenuBuilder actionMenuBuilder) {
-        sendServerMessage(player, "user_menu_actions", actionMenuBuilder.getJsonObject());
+        sendServerMessage(player, "user_menu_actions", actionMenuBuilder.getJsonArray());
     }
 
 }

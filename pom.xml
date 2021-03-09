@@ -76,7 +76,7 @@
                     <!-- Replacing default-compile as it is treated specially by maven -->
                     <execution>
                         <id>default-compile</id>
-                        <phase>none</phase>
+                        <phase>package</phase>
                     </execution>
                     <!-- Replacing default-testCompile as it is treated specially by maven -->
                     <execution>
