@@ -63,19 +63,19 @@ public class BukkitLabyMod {
         LMCUtils.sendLMCMessage(receiver, "emote_api", array.getAsJsonObject());
     }
 
-    public void setSubtitle(Player receiver, UUID subtitlePlayer, String value) {
+    public void setSubtitle(Player receiver, UUID subtitlePlayer, String value, double size) {
         JsonArray array = new JsonArray();
 
         JsonObject subtitle = new JsonObject();
         subtitle.addProperty("uuid", subtitlePlayer.toString());
-        subtitle.addProperty("size", 0.8d); // Range is 0.8 - 1.6 (1.6 is Minecraft default)
+        subtitle.addProperty("size", size); // Range is 0.8 - 1.6 (1.6 is Minecraft default)
 
         if (value != null)
             subtitle.addProperty("value", value);
 
         array.add(subtitle);
 
-        LMCUtils.sendLMCMessage(receiver, "account_subtitle", array.getAsJsonObject());
+        sendServerMessage(receiver, "account_subtitle", array);
     }
 
     public void sendCurrentPlayingGamemode(Player player, boolean visible, String gamemodeName) {
