@@ -1,9 +1,6 @@
 # MinecraftCore
 
 [![CodeFactor](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore/badge)](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore)
-![Twitter Follow](https://img.shields.io/twitter/follow/SpotifyNutzer?label=SpotifyNutzer&logo=twitter&style=for-the-badge)
-![GitHub followers](https://img.shields.io/github/followers/SpotifyNutzeer?logo=GitHub&style=for-the-badge)
-
 <h2>Repository & Dependency</h2>
 Maven
 
