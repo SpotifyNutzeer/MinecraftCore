@@ -1,4 +1,7 @@
 # MinecraftCore
+
+[![CodeFactor](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore/badge)](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore)
+
 <h2>Repository & Dependency</h2>
 Maven
 
