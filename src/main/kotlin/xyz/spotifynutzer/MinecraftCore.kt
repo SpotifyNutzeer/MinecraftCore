@@ -100,7 +100,7 @@ class MinecraftCore : JavaPlugin() {
         packetDecoder.disconnect()
     }
 
-    fun createNewJsonConfig(path: String): ConfigManager {
+    fun createNewJsonConfig(): ConfigManager {
         return ConfigManager()
     }
 
