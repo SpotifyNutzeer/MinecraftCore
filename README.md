@@ -1,5 +1,6 @@
 # MinecraftCore
-[![Java CI with Maven](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml/badge.svg)](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml)
+
+[![CodeFactor](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore/badge)](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore)
 <h2>Repository & Dependency</h2>
 Maven
 
