@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>xyz.spotifynutzer</groupId>
-  <artifactId>MinecraftCore</artifactId>
-  <name>MinecraftCore</name>
-  <version>1.4</version>
-  <build>
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-    <plugins>
-      <plugin>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>xyz.spotifynutzer</groupId>
+    <artifactId>MinecraftCore</artifactId>
+    <name>MinecraftCore</name>
+    <version>1.4.1</version>
+    <build>
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+        <plugins>
+            <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
         <version>${kotlin.version}</version>
@@ -42,17 +42,24 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <transformers>
-            <transformer>
-              <manifestEntries>
-                <Main-Class>${main.class}</Main-Class>
-              </manifestEntries>
-            </transformer>
-          </transformers>
-        </configuration>
+          <configuration>
+              <transformers>
+                  <transformer>
+                      <manifestEntries>
+                          <Main-Class>${main.class}</Main-Class>
+                      </manifestEntries>
+                  </transformer>
+              </transformers>
+          </configuration>
       </plugin>
-    </plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
   </build>
   <repositories>
     <repository>

@@ -1,5 +1,7 @@
 package xyz.spotifynutzer.json
 
+import org.bukkit.Bukkit
+import org.bukkit.Location
 import xyz.spotifynutzer.MinecraftCore
 import java.io.File
 
@@ -95,6 +97,43 @@ class ConfigManager {
     @Throws(NumberFormatException::class, NullPointerException::class)
     fun getLong(path: String): Long? {
         return java.lang.Long.valueOf(configuration[path].toString())
+    }
+
+    /**
+     * @param path                      the path where the location should be written
+     * @param value                     the location that should be written
+     */
+    fun setLocation(path: String, value: Location) {
+        val world = value.world.name
+        val x = value.x
+        val y = value.y
+        val z = value.z
+        val pitch = value.pitch
+        val yaw = value.yaw
+
+        configuration.put("$path.world", world)
+        configuration.put("$path.x", x)
+        configuration.put("$path.y", y)
+        configuration.put("$path.z", z)
+        configuration.put("$path.pitch", pitch)
+        configuration.put("$path.yaw", yaw)
+    }
+
+    /**
+     * @param path                      the path where the location should be found
+     * @return                          the searched location
+     * @throws NullPointerException     might produce NullPointerException
+     */
+    @Throws(NullPointerException::class)
+    fun getLocation(path: String): Location? {
+        val world = Bukkit.getWorld(configuration["$path.world"].toString())
+        val x = configuration["$path.x"] as Double
+        val y = configuration["$path.y"] as Double
+        val z = configuration["$path.z"] as Double
+        val pitch = configuration["$path.pitch"] as Float
+        val yaw = configuration["$path.yaw"] as Float
+
+        return Location(world, x, y, z, pitch, yaw)
     }
 
     /**
