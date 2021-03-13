@@ -6,6 +6,7 @@ import org.bukkit.event.Listener
 import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
 import xyz.spotifynutzer.commands.CommandManager
+import xyz.spotifynutzer.commands.commands.MinecraftCoreCommand
 import xyz.spotifynutzer.database.DatabaseManager
 import xyz.spotifynutzer.database.MongoAPI
 import xyz.spotifynutzer.json.ConfigManager
@@ -46,6 +47,7 @@ class MinecraftCore : JavaPlugin() {
 
     override fun onEnable() {
         registerListeners(JoinListener())
+        getCommandManager().registerCommands(MinecraftCoreCommand())
         Bukkit.getConsoleSender().sendMessage("§8[§aMinecraftCore§8] §aLoaded Plugin!")
     }
 
