@@ -4,6 +4,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
+import java.util.*
 
 interface ICommand : CommandExecutor, TabCompleter {
 
@@ -27,11 +28,11 @@ interface ICommand : CommandExecutor, TabCompleter {
     fun getCommand(): String
 
     override fun onTabComplete(
-        p0: CommandSender?,
-        p1: Command?,
-        p2: String?,
-        p3: Array<out String>?
+        sender: CommandSender?,
+        command: Command,
+        string: String,
+        args: Array<out String>?
     ): MutableList<String> {
-        TODO("No imt yetplemented")
+        return Collections.singletonList("TODO")
     }
 }
