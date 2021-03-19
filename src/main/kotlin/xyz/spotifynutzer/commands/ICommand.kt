@@ -28,10 +28,10 @@ interface ICommand : CommandExecutor, TabCompleter {
     fun getCommand(): String
 
     override fun onTabComplete(
-        sender: CommandSender?,
+        sender: CommandSender,
         command: Command,
         string: String,
-        args: Array<out String>?
+        args: Array<out String>
     ): MutableList<String> {
         return Collections.singletonList("TODO")
     }

@@ -3,6 +3,10 @@ package xyz.spotifynutzer.database
 import org.bson.Document
 import xyz.spotifynutzer.MinecraftCore
 
+/**
+ * DON´T USE!!!
+ */
+@Deprecated("Many Bugs")
 class DatabaseManager {
 
     /**
