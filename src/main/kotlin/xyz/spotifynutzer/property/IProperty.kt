@@ -10,5 +10,5 @@ interface IProperty<T: Any> {
     /**
      * @return the value of this property converted to a json string.
      */
-    fun getValueAsString(): T
+    fun getValueAsString(): String
 }

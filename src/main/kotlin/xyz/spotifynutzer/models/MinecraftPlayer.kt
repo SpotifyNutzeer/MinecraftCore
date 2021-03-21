@@ -5,6 +5,8 @@ import net.minecraft.server.v1_8_R3.PacketPlayOutChat
 import org.bukkit.Bukkit
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
+import xyz.spotifynutzer.property.IProperty
+import xyz.spotifynutzer.property.Property
 import java.util.*
 
 class MinecraftPlayer {
@@ -54,4 +56,5 @@ class MinecraftPlayer {
     fun kick(message: String) {
         player.kickPlayer(message.replace("&", "§"))
     }
+
 }
