@@ -1,7 +1,7 @@
 package xyz.spotifynutzer.manager
 
 import org.bukkit.entity.Player
-import xyz.spotifynutzer.models.MinecraftPlayer
+import xyz.spotifynutzer.models.player.MinecraftPlayer
 import xyz.spotifynutzer.utils.PacketDecoder
 import java.util.*
 import kotlin.collections.HashMap

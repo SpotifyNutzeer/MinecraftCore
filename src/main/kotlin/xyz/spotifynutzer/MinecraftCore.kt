@@ -28,7 +28,7 @@ class MinecraftCore : JavaPlugin() {
     }
 
     //Class Instances
-    private val databaseManager: DatabaseManager = DatabaseManager()
+    //private val databaseManager: DatabaseManager = DatabaseManager()
     private val configProvider: ConfigProvider = ConfigProvider()
 
     //Lateinit Class Instances
@@ -86,9 +86,9 @@ class MinecraftCore : JavaPlugin() {
         return commandManager
     }
 
-    fun getDatabaseManager(): DatabaseManager {
+    /*fun getDatabaseManager(): DatabaseManager {
         return databaseManager
-    }
+    }*/
 
     fun getPlayerCacheManager(): MinecraftPlayerCacheManager {
         return playerCacheManager

@@ -1,12 +1,10 @@
-package xyz.spotifynutzer.models
+package xyz.spotifynutzer.models.player
 
 import net.minecraft.server.v1_8_R3.IChatBaseComponent
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat
 import org.bukkit.Bukkit
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
-import xyz.spotifynutzer.property.IProperty
-import xyz.spotifynutzer.property.Property
 import java.util.*
 
 class MinecraftPlayer {
