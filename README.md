@@ -1,6 +1,6 @@
 # MinecraftCore
 
-[![CodeFactor](https://www.codefactor.io/repository/github/pvptraining/minecraftcore/badge)]
+![CodeFactor](https://www.codefactor.io/repository/github/pvptraining/minecraftcore/badge)
 
 <h2>Repository & Dependency</h2>
 Maven
