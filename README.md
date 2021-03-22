@@ -30,4 +30,22 @@ Maven
 </dependencies>
 ````
 
+Gradle
+````Gradle
+repositories {
+    …
+    maven 'https://spotifynutzer.jfrog.io/artifactory/MinecraftCore'
+    …
+}
+````
+
+````Gradle
+dependencies {
+    …
+    compileOnly 'xyz.spotifynutzer:MinecraftCore:VERSION'
+    …
+}
+````
+
+
 <a href="https://github.com/SpotifyNutzeer/MinecraftCore/wiki">Wiki</a>
