@@ -2,6 +2,8 @@
 
 ![CodeFactor](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore/badge)
 
+[![Java CI with Maven](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml)
+
 <h2>Repository & Dependency</h2>
 Maven
 
