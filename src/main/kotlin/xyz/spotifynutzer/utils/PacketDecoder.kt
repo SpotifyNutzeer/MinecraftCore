@@ -15,11 +15,7 @@ import net.minecraft.server.v1_8_R3.Packet
 
 class PacketDecoder(private val player: Player) {
 
-    private val channel: Channel
-
-    init {
-        this.channel = (player as CraftPlayer).handle.playerConnection.networkManager.channel
-    }
+    private val channel: Channel = (player as CraftPlayer).handle.playerConnection.networkManager.channel
 
     fun inject(): PacketDecoder {
         channel.pipeline().addAfter("decoder", "MinecraftCore", object : MessageToMessageDecoder<Packet<*>>() {

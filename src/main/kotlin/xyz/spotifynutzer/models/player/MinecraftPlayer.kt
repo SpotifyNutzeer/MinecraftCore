@@ -7,43 +7,58 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
 import java.util.*
 
-class MinecraftPlayer {
+/**
+ * @author SpotifyNutzer
+ * Website: spotifynutzer.de
+ * Github: https://github.com/SpotifyNutzeer
+ * Erstellt von SpotifyNutzer | Paul
+ **/
+
+class MinecraftPlayer: IMinecraftPlayer {
 
     private val player: Player
     private val craftPlayer: CraftPlayer
+    private val uuid: UUID
+
+    constructor(uuid: UUID) {
+        this.player = Bukkit.getPlayer(uuid)
+        this.craftPlayer = player as CraftPlayer
+        this.uuid = uuid
+    }
+
+    constructor(uuid: String) {
+        this.player = Bukkit.getPlayer(uuid)
+        this.craftPlayer = player as CraftPlayer
+        this.uuid = UUID.fromString(uuid)
+    }
 
     constructor(player: Player) {
         this.player = player
         this.craftPlayer = player as CraftPlayer
+        this.uuid = player.uniqueId
     }
 
-    constructor(uuid: UUID) {
-        this.player = Bukkit.getServer().getPlayer(uuid)
-        this.craftPlayer = this.player as CraftPlayer
-    }
-
-    constructor(uuid: String) {
-        this.player = Bukkit.getServer().getPlayer(uuid)
-        this.craftPlayer = this.player as CraftPlayer
-    }
-
-    fun getUniqueID(): UUID {
+    override fun getUniqueID(): UUID {
         return player.uniqueId
     }
 
-    fun getUniqueIDString(): String {
+    override fun getUniqueIDAsString(): String {
         return player.uniqueId.toString()
     }
 
-    fun getPlayer(): Player {
+    override fun getName(): String {
+        return player.name
+    }
+
+    override fun getPlayer(): Player {
         return player
     }
 
-    fun getCraftPlayer(): CraftPlayer {
+    override fun getCraftPlayer(): CraftPlayer {
         return craftPlayer
     }
 
-    fun sendActionBar(message: String) {
+    override fun sendActionbar(message: String) {
         val packet: PacketPlayOutChat = PacketPlayOutChat(
             IChatBaseComponent.ChatSerializer.a("{\"text\":\" ${message.replace("&", "§")} \"}"),
             2 as Byte
@@ -51,8 +66,7 @@ class MinecraftPlayer {
         craftPlayer.handle.playerConnection.sendPacket(packet)
     }
 
-    fun kick(message: String) {
-        player.kickPlayer(message.replace("&", "§"))
+    override fun kick(reason: String) {
+        player.kickPlayer(reason)
     }
-
 }
