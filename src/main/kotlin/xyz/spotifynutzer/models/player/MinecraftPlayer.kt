@@ -59,7 +59,7 @@ class MinecraftPlayer: IMinecraftPlayer {
     }
 
     override fun sendActionbar(message: String) {
-        val packet: PacketPlayOutChat = PacketPlayOutChat(
+        val packet = PacketPlayOutChat(
             IChatBaseComponent.ChatSerializer.a("{\"text\":\" ${message.replace("&", "§")} \"}"),
             2 as Byte
         )

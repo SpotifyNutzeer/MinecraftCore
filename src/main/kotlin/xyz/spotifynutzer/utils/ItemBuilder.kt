@@ -125,7 +125,7 @@ class ItemBuilder {
 
     private fun getItemStack(glow: Boolean, item: ItemStack, meta: ItemMeta): ItemStack? {
         if (glow) {
-            meta.addItemFlags(*arrayOf(ItemFlag.HIDE_ENCHANTS))
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS)
             meta.addEnchant(Enchantment.WATER_WORKER, 1, false)
         }
         val var4: Iterator<*> = enchants.entries.iterator()
@@ -133,7 +133,7 @@ class ItemBuilder {
             val set: Map.Entry<*, *> = var4.next() as Map.Entry<*, *>
             meta.addEnchant(set.key as Enchantment?, set.value as Int, true)
         }
-        meta.addItemFlags(*arrayOf(ItemFlag.HIDE_ATTRIBUTES))
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
         item.itemMeta = meta
         return item
     }
@@ -169,7 +169,7 @@ class ItemBuilder {
             val set: Map.Entry<*, *> = var3.next() as Map.Entry<*, *>
             meta.addEnchant(set.key as Enchantment?, set.value as Int, true)
         }
-        meta.addItemFlags(*arrayOf(ItemFlag.HIDE_ATTRIBUTES))
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
         item.itemMeta = meta
         return item
     }
@@ -221,7 +221,7 @@ class ItemBuilder {
         if (name != null && name !== "") {
             meta.displayName = name
         }
-        if (!lores.isEmpty()) {
+        if (lores.isNotEmpty()) {
             meta.lore = lores
         }
         if (durability.toInt() != -101) {
@@ -267,7 +267,7 @@ class ItemBuilder {
             val set: Map.Entry<*, *> = var4.next() as Map.Entry<*, *>
             meta.addEnchant(set.key as Enchantment?, set.value as Int, true)
         }
-        meta.addItemFlags(*arrayOf(ItemFlag.HIDE_ATTRIBUTES))
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
         item.itemMeta = meta
         return item
     }
