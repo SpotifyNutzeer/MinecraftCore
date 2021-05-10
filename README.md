@@ -12,7 +12,7 @@ Maven
     <!-- MinecraftCore Repo -->
     <repository>
         <id>minecraftcore-repo</id>
-        <url>https://spotifynutzer.jfrog.io/artifactory/MinecraftCore/</url>
+        <url>https://repo.spotifynutzer.xyz/artifactory/MinecraftCore/</url>
     </repository>
     ...
 </repositories>
@@ -35,7 +35,7 @@ Gradle
 ````Gradle
 repositories {
     …
-    maven 'https://spotifynutzer.jfrog.io/artifactory/MinecraftCore'
+    maven 'https://repo.spotifynutzer.xyz/artifactory/MinecraftCore'
     …
 }
 ````
