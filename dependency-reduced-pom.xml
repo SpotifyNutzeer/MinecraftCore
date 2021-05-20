@@ -4,7 +4,7 @@
   <groupId>xyz.spotifynutzer</groupId>
   <artifactId>MinecraftCore</artifactId>
   <name>MinecraftCore</name>
-  <version>1.4.1</version>
+  <version>1.4.2</version>
   <build>
     <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
     <plugins>
@@ -53,8 +53,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>8</source>
-          <target>8</target>
+          <source>7</source>
+          <target>7</target>
         </configuration>
       </plugin>
     </plugins>
@@ -98,10 +98,11 @@
     </snapshotRepository>
   </distributionManagement>
   <properties>
-    <main.class>xyz.spotifynutzer</main.class>
     <kotlin.code.style>official</kotlin.code.style>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <main.class>xyz.spotifynutzer</main.class>
     <kotlin.version>1.5.0-M1</kotlin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
   </properties>
 </project>
+

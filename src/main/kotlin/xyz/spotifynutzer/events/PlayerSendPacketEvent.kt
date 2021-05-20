@@ -12,8 +12,8 @@ class PlayerSendPacketEvent(val player: Player, packet: Packet<*>, channel: Chan
     Event(), Cancellable {
 
     private var cancelled = false
-    private val packet: Packet<*>
-    private val channel: Channel
+    private val packet: Packet<*> = packet
+    private val channel: Channel = channel
 
     /**
      * @return          the packet
@@ -55,8 +55,4 @@ class PlayerSendPacketEvent(val player: Player, packet: Packet<*>, channel: Chan
         val handlerList = HandlerList()
     }
 
-    init {
-        this.packet = packet
-        this.channel = channel
-    }
 }
