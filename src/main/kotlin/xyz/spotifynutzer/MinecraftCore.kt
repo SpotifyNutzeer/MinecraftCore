@@ -9,8 +9,10 @@ import xyz.spotifynutzer.commands.CommandManager
 import xyz.spotifynutzer.commands.commands.MinecraftCoreCommand
 import xyz.spotifynutzer.database.DatabaseManager
 import xyz.spotifynutzer.database.MongoAPI
+import xyz.spotifynutzer.inventory.InventoryManager
 import xyz.spotifynutzer.json.ConfigManager
 import xyz.spotifynutzer.json.ConfigProvider
+import xyz.spotifynutzer.listeners.InventoryClickListener
 import xyz.spotifynutzer.listeners.JoinListener
 import xyz.spotifynutzer.manager.MinecraftPlayerCacheManager
 import xyz.spotifynutzer.utils.PacketDecoder
@@ -35,6 +37,7 @@ class MinecraftCore : JavaPlugin() {
     private lateinit var commandManager: CommandManager
     private lateinit var mongoAPI: MongoAPI
     private lateinit var playerCacheManager: MinecraftPlayerCacheManager
+    private lateinit var inventoryManager: InventoryManager
 
     //Values
     private lateinit var prefix: String
@@ -43,11 +46,14 @@ class MinecraftCore : JavaPlugin() {
         instance = this
         commandManager = CommandManager()
         playerCacheManager = MinecraftPlayerCacheManager(ArrayList())
+        inventoryManager = InventoryManager()
     }
 
     override fun onEnable() {
-        registerListeners(JoinListener())
+        registerListeners(JoinListener(), InventoryClickListener())
+
         getCommandManager().registerCommands(MinecraftCoreCommand())
+
         Bukkit.getConsoleSender().sendMessage("§8[§aMinecraftCore§8] §aLoaded Plugin!")
     }
 
@@ -55,7 +61,7 @@ class MinecraftCore : JavaPlugin() {
         Bukkit.getConsoleSender().sendMessage("§8[§aMinecraftCore§8] §cUnloaded Plugin!")
     }
 
-    fun registerListeners(vararg listeners: Listener) {
+    private fun registerListeners(vararg listeners: Listener) {
         val pluginManager: PluginManager = Bukkit.getPluginManager()
         listeners.forEach {
             pluginManager.registerEvents(it, this)
@@ -108,6 +114,10 @@ class MinecraftCore : JavaPlugin() {
 
     fun getConfigProvider(): ConfigProvider {
         return configProvider
+    }
+
+    fun getInventoryManager(): InventoryManager {
+        return inventoryManager;
     }
 
 }
