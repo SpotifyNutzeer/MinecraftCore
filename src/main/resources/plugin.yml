@@ -1,7 +1,8 @@
 main: xyz.spotifynutzer.MinecraftCore
 name: MinecraftCore
-version: 1.0
+version: 1.4.2
 api-version: 1.8
+description: A API based on Kotlin that makes Spigot Coding easier for you.
 authors:
   - SpotifyNutzer
   - kxmpetentes

@@ -22,4 +22,8 @@ data class ScoreboardModel(private val displayName: String, private val name: St
     fun setScoreboard(player: Player) {
         player.scoreboard = scoreboard
     }
+
+    fun getScoreboard(): Scoreboard? {
+        return this.scoreboard
+    }
 }

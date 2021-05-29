@@ -1,6 +1,8 @@
 # MinecraftCore
 
-[![CodeFactor](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore/badge)](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore)
+![CodeFactor](https://www.codefactor.io/repository/github/spotifynutzeer/minecraftcore/badge)
+[![Java CI with Maven](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/SpotifyNutzeer/MinecraftCore/actions/workflows/maven.yml)
+
 <h2>Repository & Dependency</h2>
 Maven
 
@@ -10,7 +12,7 @@ Maven
     <!-- MinecraftCore Repo -->
     <repository>
         <id>minecraftcore-repo</id>
-        <url>https://spotifynutzer.jfrog.io/artifactory/MinecraftCore/</url>
+        <url>https://repo.spotifynutzer.xyz/artifactory/MinecraftCore/</url>
     </repository>
     ...
 </repositories>
@@ -28,5 +30,23 @@ Maven
     ...
 </dependencies>
 ````
+
+Gradle
+````Gradle
+repositories {
+    …
+    maven 'https://repo.spotifynutzer.xyz/artifactory/MinecraftCore'
+    …
+}
+````
+
+````Gradle
+dependencies {
+    …
+    compileOnly 'xyz.spotifynutzer:MinecraftCore:VERSION'
+    …
+}
+````
+
 
 <a href="https://github.com/SpotifyNutzeer/MinecraftCore/wiki">Wiki</a>

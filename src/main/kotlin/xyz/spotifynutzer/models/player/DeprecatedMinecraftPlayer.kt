@@ -1,4 +1,4 @@
-package xyz.spotifynutzer.models
+package xyz.spotifynutzer.models.player
 
 import net.minecraft.server.v1_8_R3.IChatBaseComponent
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat
@@ -8,7 +8,8 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
 import java.util.*
 
-class MinecraftPlayer {
+@Deprecated("Replaced with Interface")
+class DeprecatedMinecraftPlayer {
 
     private val player: OfflinePlayer
     private val craftPlayer: CraftPlayer
@@ -57,4 +58,5 @@ class MinecraftPlayer {
             (player as Player).kickPlayer(message.replace("&", "§"))
         }
     }
+
 }

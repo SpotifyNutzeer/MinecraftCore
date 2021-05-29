@@ -84,7 +84,7 @@ public class LMCUtils {
      * @param string the string that should be written to the buffer
      */
     private static void writeString(ByteBuf buf, String string) {
-        byte[] abyte = string.getBytes(Charset.forName("UTF-8"));
+        byte[] abyte = string.getBytes(StandardCharsets.UTF_8);
 
         if (abyte.length > Short.MAX_VALUE) {
             throw new EncoderException("String too big (was " + string.length() + " bytes encoded, max " + Short.MAX_VALUE + ")");
