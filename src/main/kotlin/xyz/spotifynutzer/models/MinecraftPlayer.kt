@@ -3,16 +3,17 @@ package xyz.spotifynutzer.models
 import net.minecraft.server.v1_8_R3.IChatBaseComponent
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat
 import org.bukkit.Bukkit
+import org.bukkit.OfflinePlayer
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer
 import org.bukkit.entity.Player
 import java.util.*
 
 class MinecraftPlayer {
 
-    private val player: Player
+    private val player: OfflinePlayer
     private val craftPlayer: CraftPlayer
 
-    constructor(player: Player) {
+    constructor(player: OfflinePlayer) {
         this.player = player
         this.craftPlayer = player as CraftPlayer
     }
@@ -35,7 +36,7 @@ class MinecraftPlayer {
         return player.uniqueId.toString()
     }
 
-    fun getPlayer(): Player {
+    fun getPlayer(): OfflinePlayer {
         return player
     }
 
@@ -44,7 +45,7 @@ class MinecraftPlayer {
     }
 
     fun sendActionBar(message: String) {
-        val packet: PacketPlayOutChat = PacketPlayOutChat(
+        val packet = PacketPlayOutChat(
             IChatBaseComponent.ChatSerializer.a("{\"text\":\" ${message.replace("&", "§")} \"}"),
             2 as Byte
         )
@@ -52,6 +53,8 @@ class MinecraftPlayer {
     }
 
     fun kick(message: String) {
-        player.kickPlayer(message.replace("&", "§"))
+        if (player.isOnline) {
+            (player as Player).kickPlayer(message.replace("&", "§"))
+        }
     }
 }

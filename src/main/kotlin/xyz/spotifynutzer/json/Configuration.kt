@@ -1,9 +1,6 @@
 package xyz.spotifynutzer.json
 
-import java.util.HashMap
-
-
-
+import java.util.*
 
 class Configuration {
 
